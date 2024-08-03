@@ -1,0 +1,40 @@
+
+.mainContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 1px solid red;*/
+    margin-top: 5.3rem;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 38rem;
+    gap: 2rem;
+}
+
+.mainContent .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainContent .info p {
+    color: var( --Blue);
+}
+
+.mainContent .info span {
+    color: var(--Purple);
+}
+
+.mainContent .listContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-direction: column;
+}
+

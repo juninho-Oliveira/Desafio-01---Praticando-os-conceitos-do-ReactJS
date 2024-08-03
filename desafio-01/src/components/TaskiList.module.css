@@ -1,0 +1,46 @@
+ .list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    border: 2px solid var(--gray-400);
+    border-radius: 8px;
+    height: 6rem;
+    background-color: var(--gray-500);
+    color: var(--gray-100);
+}
+
+.list input[type="checkbox"] {
+    appearance: none;
+    width: 2rem;
+    height: 1.5rem;
+    border: 2px solid var(--Blue);
+    border-radius: 50%;
+    outline: none;
+}
+
+ input[type="checkbox"]:checked {
+    background-color: var(--Purple-Dark); 
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ .list button {
+    background-color: transparent;
+    border: none;
+    color: var(--gray-300);
+    cursor: pointer;
+}
+
+ .list button:hover {
+    transition: 0.5s;
+    color: var(--Blue);
+}
+
