@@ -20,14 +20,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 1.5rem;
 }
 
 .mainContent .info p {
     color: var( --Blue);
 }
 
-.mainContent .info span {
-    color: var(--Purple);
+.mainContent .info p span {
+    color: var(--gray-200);
+    background-color: var(--gray-400);
+    border-radius: 10px;
+    padding: 3px 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.mainContent .info .roxo {
+    color: var(--Purple)
 }
 
 .mainContent .listContent {
