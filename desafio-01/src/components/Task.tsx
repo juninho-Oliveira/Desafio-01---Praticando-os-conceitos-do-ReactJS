@@ -14,7 +14,11 @@ export function Task() {
 
     const [quantidadeCheck, setQuantidadeCheck] = useState<number>(0);
 
-    const listaDeTarefas: Task[] = [
+    /*const [comments, setComments] = useState([
+        'Post muito bacana, hein?'
+    ])*/
+
+    const [listaDeTarefas, setListaDeTarefas] = useState<Task[]>([
         {
             id: 1,
             task: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'
@@ -39,21 +43,21 @@ export function Task() {
             id: 6,
             task: 'Finalizar desafio da Rocketseat.'
         },
+    ]);
 
-
-
-    ]
 
     const quantidadeDeTarefas = listaDeTarefas.length
 
     const handleTaskCheckChange = (isChecked: boolean) => {
         setQuantidadeCheck(prev => isChecked ? prev + 1 : prev - 1);
-        
+
     };
 
-    const remover = () => {
-        alert('I am the father! ')
-    } 
+    const remover = (id: number) => {
+        //alert('I am the father! ')
+        const listaNova = listaDeTarefas.filter(lista => lista.id != id)
+        setListaDeTarefas(listaNova);
+    }
 
 
     return (
@@ -72,9 +76,9 @@ export function Task() {
                         return (
                             <TaskList
                                 tarefa={task.task}
-                                key={task.id} 
+                                key={task.id}
                                 onCheckChange={handleTaskCheckChange}
-                                remover={remover}/>
+                                remover={() => remover(task.id)} />
                         )
                     })}
                 </section>
