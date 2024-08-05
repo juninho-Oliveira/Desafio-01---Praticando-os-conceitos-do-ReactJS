@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import styles from './Task.module.css'
 import { TaskList } from './TaskList'
+import { NewTask } from './NewTask';
 
 
 interface Task {
@@ -12,11 +13,9 @@ interface Task {
 
 export function Task() {
 
+
     const [quantidadeCheck, setQuantidadeCheck] = useState<number>(0);
 
-    /*const [comments, setComments] = useState([
-        'Post muito bacana, hein?'
-    ])*/
 
     const [listaDeTarefas, setListaDeTarefas] = useState<Task[]>([
         {
@@ -59,32 +58,46 @@ export function Task() {
         setListaDeTarefas(listaNova);
     }
 
+    const addTask = (task: string) => {
+        if (task.trim() === '') return;
+        setListaDeTarefas(prev => [
+            ...prev,
+            { id: prev.length + 1, task }
+        ]);
+    };
+
 
     return (
-        <main className={styles.mainContent}>
 
-            <div className={styles.content}>
+        <>
+            < NewTask addTask={addTask} />
+            <main className={styles.mainContent}>
 
-                <section className={styles.info}>
-                    <p>Tarefas criadas <span>{quantidadeDeTarefas}</span></p>
-                    <p className={styles.roxo}>Concluídas <span>{`${quantidadeCheck} de ${quantidadeDeTarefas}`}</span></p>
-                </section>
+                <div className={styles.content}>
 
-                <section className={styles.listContent}>
+                    <section className={styles.info}>
+                        <p>Tarefas criadas <span>{quantidadeDeTarefas}</span></p>
+                        <p className={styles.roxo}>Concluídas <span>{`${quantidadeCheck} de ${quantidadeDeTarefas}`}</span></p>
+                    </section>
 
-                    {listaDeTarefas.map(task => {
-                        return (
-                            <TaskList
-                                tarefa={task.task}
-                                key={task.id}
-                                onCheckChange={handleTaskCheckChange}
-                                remover={() => remover(task.id)} />
-                        )
-                    })}
-                </section>
+                    <section className={styles.listContent}>
 
-            </div>
+                        {listaDeTarefas.map(task => {
+                            return (
+                                <TaskList
+                                    tarefa={task.task}
+                                    key={task.id}
+                                    onCheckChange={handleTaskCheckChange}
+                                    remover={() => remover(task.id)} />
+                            )
+                        })}
+                    </section>
 
-        </main>
+                </div>
+
+            </main>
+        </>
+
+
     )
 }

@@ -1,9 +1,13 @@
 import { PlusCircle } from "phosphor-react";
 import styles from './NewTask.module.css'
 import { useState } from "react";
-import { Task } from './Task'
+//import { Task } from './Task'
 
-export function NewTask() {
+interface NewTaskProps {
+    addTask: (task: string) => void;
+}
+
+export function NewTask({addTask}:NewTaskProps) {
 
     const [valor, setValor] = useState<string>('')
 
@@ -11,10 +15,10 @@ export function NewTask() {
         setValor(event.target.value);
     }
 
-    function handleNewTaskList() {
-        alert(`Valor do input: ${valor}`); 
+    const handleNewTaskList = () => {
+        addTask(valor); 
         setValor('');
-    }
+    };
 
     return (
         <> 
@@ -32,7 +36,7 @@ export function NewTask() {
                 Criar <PlusCircle size={20} />
             </button>
         </div>
-        <Task />
+        
         </>
 
         
